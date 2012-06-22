@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
+    %title SUGOI SYUSSEKI BO
+  %body
+    %h1 すごいウェブ出席簿
+    %form{:action => "/", :method => "post"}
+      %input{:type => "input", :name => "name"}
+      %button 出席!
+    %p 出席者一覧☆彡
+    %table{:border => 1}
+      %tr
+        %th 名前
+        %th 出席時刻
+      - @attendances.each do |attendance|
+        %tr
+          %td= attendance[:name]
+          %td= attendance[:time].strftime( "%c" )
